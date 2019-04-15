@@ -5,22 +5,43 @@ import './style.css'
 
 class Main extends Component {
     state = {
-        products: []
+        products: [],
+        productInfo: {},
+        page: 1
     };
 
     componentDidMount() {
         this.loadProducts();
     }
 
-    loadProducts = async () => {
-        const response = await api.get('products');
+    loadProducts = async (page = 1) => {
+        const response = await api.get(  `/products?page=${page}`);
+        const { docs, ...productInfo } = response.data;
         this.setState({
-            products: response.data.docs
+            products: response.data.docs,
+            productInfo,
+            page
         });
     };
 
+    prevPage = () => {
+        const { page } = this.state;
+
+        if (page > 1) {
+            this.loadProducts(page - 1);
+        }
+    };
+
+    nextPage = () => {
+        const { page, productInfo } = this.state;
+
+        if (page < productInfo.pages) {
+            this.loadProducts(page + 1);
+        }
+    };
+
     render() {
-        const { products } = this.state;
+        const { products, page, productInfo } = this.state;
 
         return (
             <div className="product-list">
@@ -32,6 +53,10 @@ class Main extends Component {
                         <a href="#">Acessar</a>
                     </article>
                 ))}
+                <div className="actions">
+                    <button disabled={page === 1} onClick={this.prevPage}>Anterior</button>
+                    <button disabled={page === productInfo.pages} onClick={this.nextPage}>Próxima</button>
+                </div>
             </div>
         );
     }
