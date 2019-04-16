@@ -3,6 +3,7 @@
 A small example of how to construct an application with React. Project developed through the course "ReactJS Starter by RocketSeat".
 
 ![Screen](screen.png =400x)
+<img src="screen.png" alt="drawing" width="400"/>
 ![Screen](screen1.png =200x)
 ![Screen](screen2.png =200x)
 
