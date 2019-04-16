@@ -2,11 +2,9 @@
 
 A small example of how to construct an application with React. Project developed through the course "ReactJS Starter by RocketSeat".
 
-![Screen](screen.png)
-
-![Screen](screen1.png)
-
-![Screen](screen2.png)
+![Screen](screen.png =400x)
+![Screen](screen1.png =200x)
+![Screen](screen2.png =200x)
 
 ---
 
